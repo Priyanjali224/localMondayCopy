@@ -2,9 +2,42 @@
 <html>
   <head>
     <title>Basic HTML</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h1>Hello, World!</h1>
-    <p>This is a basic HTML page.</p>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="https://jecrcu.edu.in/">JECRC University</a></li>
+    </ul>
+    <p>I am having fun with JS</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>First</th>
+          <th>Second</th>
+          <th>Third</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="first"></td>
+          <td id="second"></td>
+          <td id="third"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      const first = Number(prompt("Enter the first number:"));
+      const second = Number(prompt("Enter the second number:"));
+      const third = first + second;
+
+      document.getElementById("first").textContent = first;
+      document.getElementById("second").textContent = second;
+      document.getElementById("third").textContent = third;
+    </script>
   </body>
 </html>

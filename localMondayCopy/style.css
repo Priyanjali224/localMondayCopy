@@ -1,0 +1,97 @@
+p{
+    background-color: antiquewhite;
+    width: 100%;
+    height: ;
+}
+/* General styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+}
+
+p {
+    margin: 20px;
+    font-size: 18px;
+}
+
+/* Navigation menu */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+}
+
+ul li {
+    float: left;
+}
+
+ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul li a:hover {
+    background-color: #111111;
+}
+
+/* Table styling */
+table {
+    width: 80%;
+    margin: 30px auto;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Table header */
+th {
+    background-color: #007bff;
+    color: white;
+    padding: 14px;
+    text-align: center;
+    border: 1px solid #dddddd;
+}
+
+/* Table cells */
+td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #dddddd;
+    font-size: 15px;
+}
+
+/* Alternate row colors */
+tbody tr:nth-child(even) {
+    background-color: #f2f6fc;
+}
+
+/* Hover effect */
+tbody tr:hover {
+    background-color: #dceeff;
+}
+
+/* Highlight output column */
+.output {
+    color: #198754;
+    font-weight: bold;
+}
+
+/* Responsive table */
+@media (max-width: 600px) {
+    table {
+        width: 96%;
+    }
+
+    th,
+    td {
+        padding: 8px 5px;
+        font-size: 12px;
+    }
+}

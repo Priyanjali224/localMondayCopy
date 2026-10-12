@@ -18,14 +18,16 @@
         <tr>
           <th>First</th>
           <th>Second</th>
-          <th>Third</th>
+          <th>Operation</th>
+          <th>Final Output</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td id="first"></td>
           <td id="second"></td>
-          <td id="third"></td>
+          <td>+</td>
+          <td id="result"></td>
         </tr>
       </tbody>
     </table>
@@ -33,11 +35,12 @@
     <script>
       const first = Number(prompt("Enter the first number:"));
       const second = Number(prompt("Enter the second number:"));
-      const third = first + second;
+      const result = first + second;
 
       document.getElementById("first").textContent = first;
       document.getElementById("second").textContent = second;
-      document.getElementById("third").textContent = third;
+      document.getElementById("result").textContent = result;
+      alert(`Final output: ${result}`);
     </script>
   </body>
 </html>

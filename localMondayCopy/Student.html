@@ -54,6 +54,97 @@
           </article>
         </section>
 
+        <section class="academic-dashboard" aria-labelledby="dashboard-heading">
+          <div class="section-heading">
+            <div><p class="eyebrow">THE BIG PICTURE</p><h2 id="dashboard-heading">Academic dashboard</h2></div>
+            <p class="section-caption">Your semester, at a glance</p>
+          </div>
+          <div class="academic-stats">
+            <article class="academic-stat"><span class="academic-stat-icon stat-icon-purple" aria-hidden="true">▤</span><div><p class="stat-label">Subjects</p><p class="stat-value" id="subject-count">0</p></div></article>
+            <article class="academic-stat"><span class="academic-stat-icon stat-icon-green" aria-hidden="true">◉</span><div><p class="stat-label">Average attendance</p><p class="stat-value" id="attendance-average">—</p></div></article>
+            <article class="academic-stat"><span class="academic-stat-icon stat-icon-amber" aria-hidden="true">↗</span><div><p class="stat-label">Syllabus covered</p><p class="stat-value" id="syllabus-average">—</p></div></article>
+            <article class="academic-stat"><span class="academic-stat-icon stat-icon-purple" aria-hidden="true">☑</span><div><p class="stat-label">Pending work</p><p class="stat-value" id="pending-work">0</p></div></article>
+            <article class="academic-stat"><span class="academic-stat-icon stat-icon-green" aria-hidden="true">★</span><div><p class="stat-label">Average marks</p><p class="stat-value" id="marks-average">—</p></div></article>
+          </div>
+        </section>
+
+        <section class="academic-section" aria-labelledby="subjects-heading">
+          <div class="section-heading">
+            <div><p class="eyebrow">YOUR SEMESTER</p><h2 id="subjects-heading">Subjects & progress</h2></div>
+            <p class="section-caption">Syllabus, attendance and test performance</p>
+          </div>
+          <div class="subject-layout">
+            <div class="subject-grid" id="subject-list" aria-live="polite"></div>
+            <aside class="academic-form-card">
+              <div class="form-heading">
+                <span class="form-heading-icon" aria-hidden="true" id="subject-form-icon">＋</span>
+                <div><p class="eyebrow">SUBJECT DETAILS</p><h3 id="subject-form-heading">Add a subject</h3></div>
+              </div>
+              <form id="subject-form">
+                <label class="field-label" for="subject-name">Subject name <span class="required-mark">*</span></label>
+                <input id="subject-name" name="name" type="text" maxlength="80" placeholder="e.g. Data Structures" required>
+                <div class="field-row">
+                  <div class="field-column"><label class="field-label" for="subject-code">Subject code <span class="required-mark">*</span></label><input id="subject-code" name="code" type="text" maxlength="20" placeholder="CS201" required></div>
+                  <div class="field-column"><label class="field-label" for="subject-faculty">Faculty name <span class="required-mark">*</span></label><input id="subject-faculty" name="faculty" type="text" maxlength="80" placeholder="Faculty name" required></div>
+                </div>
+                <label class="field-label" for="subject-syllabus">Syllabus completed (%)</label>
+                <input id="subject-syllabus" name="syllabus" type="number" min="0" max="100" value="0" required>
+                <p class="field-group-label">Theory attendance</p>
+                <div class="field-row">
+                  <div class="field-column"><label class="field-label" for="theory-attended">Classes attended</label><input id="theory-attended" name="theoryAttended" type="number" min="0" value="0" required></div>
+                  <div class="field-column"><label class="field-label" for="theory-held">Classes held</label><input id="theory-held" name="theoryHeld" type="number" min="0" value="0" required></div>
+                </div>
+                <p class="field-group-label">Lab attendance</p>
+                <div class="field-row">
+                  <div class="field-column"><label class="field-label" for="lab-attended">Labs attended</label><input id="lab-attended" name="labAttended" type="number" min="0" value="0" required></div>
+                  <div class="field-column"><label class="field-label" for="lab-held">Labs held</label><input id="lab-held" name="labHeld" type="number" min="0" value="0" required></div>
+                </div>
+                <p class="form-validation" id="subject-validation" role="alert" hidden></p>
+                <div class="form-actions"><button class="button button-primary" type="submit" id="save-subject-button">＋ Add subject</button><button class="button button-quiet" type="button" id="cancel-subject-edit" hidden>Cancel</button></div>
+              </form>
+            </aside>
+          </div>
+        </section>
+
+        <section class="academic-activity-grid" aria-label="Class and test tracking">
+          <article class="academic-form-card activity-card">
+            <div class="section-heading compact-heading"><div><p class="eyebrow">CLASS & LAB NOTES</p><h3>Topics covered</h3></div></div>
+            <form id="topic-form" class="inline-academic-form">
+              <div class="field-row">
+                <div class="field-column"><label class="field-label" for="topic-subject">Subject</label><select id="topic-subject" name="subjectId" required></select></div>
+                <div class="field-column"><label class="field-label" for="topic-type">Session</label><select id="topic-type" name="type"><option value="theory">Class</option><option value="lab">Lab</option></select></div>
+              </div>
+              <label class="field-label" for="topic-name">Topic covered</label>
+              <input id="topic-name" name="topic" type="text" maxlength="140" placeholder="e.g. Linked lists and traversal" required>
+              <div class="field-row">
+                <div class="field-column"><label class="field-label" for="topic-date">Date</label><input id="topic-date" name="date" type="date" required></div>
+                <div class="field-column form-submit-column"><span class="field-label" aria-hidden="true">&nbsp;</span><button class="button button-primary" type="submit">＋ Log topic</button></div>
+              </div>
+            </form>
+            <div class="activity-list" id="topic-list" aria-live="polite"></div>
+          </article>
+
+          <article class="academic-form-card activity-card">
+            <div class="section-heading compact-heading"><div><p class="eyebrow">ASSESSMENTS</p><h3>Test marks</h3></div></div>
+            <form id="test-form" class="inline-academic-form">
+              <div class="field-row">
+                <div class="field-column"><label class="field-label" for="test-subject">Subject</label><select id="test-subject" name="subjectId" required></select></div>
+                <div class="field-column"><label class="field-label" for="test-name">Test name</label><input id="test-name" name="name" type="text" maxlength="80" placeholder="Quiz 2" required></div>
+              </div>
+              <div class="field-row">
+                <div class="field-column"><label class="field-label" for="test-score">Marks scored</label><input id="test-score" name="score" type="number" min="0" step="0.5" placeholder="42" required></div>
+                <div class="field-column"><label class="field-label" for="test-total">Out of</label><input id="test-total" name="total" type="number" min="0.5" step="0.5" placeholder="50" required></div>
+              </div>
+              <div class="field-row">
+                <div class="field-column"><label class="field-label" for="test-date">Test date</label><input id="test-date" name="date" type="date" required></div>
+                <div class="field-column form-submit-column"><span class="field-label" aria-hidden="true">&nbsp;</span><button class="button button-primary" type="submit">＋ Add marks</button></div>
+              </div>
+              <p class="form-validation" id="test-validation" role="alert" hidden></p>
+            </form>
+            <div class="activity-list" id="test-list" aria-live="polite"></div>
+          </article>
+        </section>
+
         <div class="workspace-grid">
           <section class="task-panel" aria-labelledby="tasks-heading">
             <div class="panel-heading">
@@ -104,6 +195,20 @@
 
               <label class="field-label" for="task-description">Description <span class="optional-label">Optional</span></label>
               <textarea id="task-description" name="description" rows="3" maxlength="500" placeholder="Add a few details to help you get started..."></textarea>
+
+              <div class="field-row">
+                <div class="field-column">
+                  <label class="field-label" for="task-category">Work type</label>
+                  <select id="task-category" name="category">
+                    <option value="daily">Daily task</option>
+                    <option value="assignment">Assignment</option>
+                  </select>
+                </div>
+                <div class="field-column">
+                  <label class="field-label" for="task-subject">Subject</label>
+                  <select id="task-subject" name="subjectId"><option value="">No subject</option></select>
+                </div>
+              </div>
 
               <div class="field-row">
                 <div class="field-column">

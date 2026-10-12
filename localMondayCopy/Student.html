@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f8fc">
+    <meta name="description" content="Plan your study sessions and keep every assignment on track with your personal student task manager.">
+    <title>Studyflow — Student Task Manager</title>
+    <link rel="stylesheet" href="Student.css">
+    <script src="Student.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="Student.html" aria-label="Studyflow home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <rect x="3" y="3" width="26" height="26" rx="9" fill="currentColor"/>
+              <path d="m10 16.5 4 4 8-9" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span>studyflow<span class="brand-period">.</span></span>
+        </a>
+        <div class="topbar-note"><span class="live-dot" aria-hidden="true"></span> Your space to get things done</div>
+      </header>
+
+      <main class="main-content">
+        <section class="welcome-row" aria-labelledby="page-title">
+          <div>
+            <p class="eyebrow">YOUR PERSONAL STUDY PLANNER</p>
+            <h1 id="page-title">Make today <span>count.</span></h1>
+            <p class="welcome-copy">One task at a time. You’ve got this.</p>
+          </div>
+          <p class="today-date" id="today-date"></p>
+        </section>
+
+        <section class="stats-grid" aria-label="Task overview">
+          <article class="stat-card">
+            <span class="stat-icon stat-icon-purple" aria-hidden="true">✳</span>
+            <div><p class="stat-label">Total tasks</p><p class="stat-value" id="total-count">0</p></div>
+          </article>
+          <article class="stat-card">
+            <span class="stat-icon stat-icon-green" aria-hidden="true">✓</span>
+            <div><p class="stat-label">Completed</p><p class="stat-value" id="completed-count">0</p></div>
+          </article>
+          <article class="stat-card">
+            <span class="stat-icon stat-icon-amber" aria-hidden="true">◷</span>
+            <div><p class="stat-label">Still to do</p><p class="stat-value" id="remaining-count">0</p></div>
+          </article>
+          <article class="stat-card progress-card">
+            <div class="progress-heading"><p class="stat-label">Daily progress</p><p class="progress-percent" id="progress-percent">0%</p></div>
+            <div class="progress-track" role="progressbar" aria-label="Daily task completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-bar"><span id="progress-fill"></span></div>
+            <p class="progress-caption" id="progress-caption">A fresh start. Pick your first task.</p>
+          </article>
+        </section>
+
+        <div class="workspace-grid">
+          <section class="task-panel" aria-labelledby="tasks-heading">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">YOUR PLAN</p>
+                <h2 id="tasks-heading">My tasks <span class="task-total-pill" id="list-count">0</span></h2>
+              </div>
+              <label class="search-box">
+                <span class="sr-only">Search tasks</span>
+                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="8.8" cy="8.8" r="5.8" stroke="currentColor" stroke-width="1.6"/><path d="m13.2 13.2 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                <input id="search-input" type="search" placeholder="Search tasks..." autocomplete="off">
+              </label>
+            </div>
+
+            <div class="filter-bar" aria-label="Filter tasks">
+              <div class="filter-group" aria-label="Completion status">
+                <button class="filter-button is-active" type="button" data-status="all" aria-pressed="true">All</button>
+                <button class="filter-button" type="button" data-status="active" aria-pressed="false">To do</button>
+                <button class="filter-button" type="button" data-status="completed" aria-pressed="false">Completed</button>
+              </div>
+              <label class="priority-filter">
+                <span class="sr-only">Filter by priority</span>
+                <select id="priority-filter">
+                  <option value="all">All priorities</option>
+                  <option value="high">High priority</option>
+                  <option value="medium">Medium priority</option>
+                  <option value="low">Low priority</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="task-list" id="task-list" aria-live="polite"></div>
+          </section>
+
+          <aside class="form-panel" aria-labelledby="form-heading">
+            <div class="form-heading">
+              <span class="form-heading-icon" aria-hidden="true" id="form-icon">＋</span>
+              <div>
+                <p class="eyebrow">STAY ON TRACK</p>
+                <h2 id="form-heading">Add a task</h2>
+              </div>
+            </div>
+            <p class="form-intro">A little planning goes a long way. What's on your list?</p>
+
+            <form id="task-form">
+              <label class="field-label" for="task-title">Task title <span class="required-mark">*</span></label>
+              <input id="task-title" name="title" type="text" maxlength="100" placeholder="e.g. Review biology notes" required>
+
+              <label class="field-label" for="task-description">Description <span class="optional-label">Optional</span></label>
+              <textarea id="task-description" name="description" rows="3" maxlength="500" placeholder="Add a few details to help you get started..."></textarea>
+
+              <div class="field-row">
+                <div class="field-column">
+                  <label class="field-label" for="task-due-date">Due date</label>
+                  <input id="task-due-date" name="dueDate" type="date">
+                </div>
+                <div class="field-column">
+                  <label class="field-label" for="task-priority">Priority</label>
+                  <select id="task-priority" name="priority">
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                    <option value="low">Low</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button class="button button-primary" id="save-task-button" type="submit"><span id="save-button-icon" aria-hidden="true">＋</span> Add task</button>
+                <button class="button button-quiet" id="cancel-edit-button" type="button" hidden>Cancel</button>
+              </div>
+              <p class="storage-error" id="storage-error" role="alert" hidden>We couldn't save your tasks in this browser. Check your browser's storage settings and try again.</p>
+            </form>
+
+            <div class="study-tip">
+              <span class="tip-sparkle" aria-hidden="true">✦</span>
+              <div><strong>A gentle reminder</strong><p>Big goals get easier when you break them into smaller tasks.</p></div>
+            </div>
+          </aside>
+        </div>
+
+        <footer class="page-footer">Made for your next big idea <span aria-hidden="true">✦</span></footer>
+      </main>
+    </div>
+  </body>
+</html>
